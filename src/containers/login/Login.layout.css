@@ -1,0 +1,159 @@
+
+ * {
+    box-sizing: border-box;
+  }
+  
+
+  h1,
+  .login,
+  .account,
+  .contact{
+    width:80%;
+    margin: 0 auto;
+   
+  }
+  
+  @supports (display: flex) {
+    .login-container, .signup-container {
+      padding:0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    
+    h1, .login, .account, .contact {
+      margin: 0;
+      width: 80%;
+    }
+  }
+  
+  @supports (display: grid) {
+    .login-container, .signup-container {
+      display: grid;
+      font-family: sans-serif;
+      grid-template-columns: auto;
+      align-content: center;
+      align-items: stretch;
+    }
+    @media (min-width: 650px) {
+      body {
+        grid-template-columns: repeat(2, minmax(150px, 30%));
+      }
+      h1,
+      .login {
+        grid-column-end: span 2;
+        width: auto;
+      }
+      .login > div {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+      }
+      .login > div.actions {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .account {
+        border-right: 1px dotted rgb(191, 216, 227);
+        padding: 0 10px 0 0;
+        width: auto;
+      }
+      .contact {
+        padding: 0 0 0 10px;
+        width: auto;
+      }
+      input[type="submit"] {
+        grid-column: 2;
+      }
+      .actions a {
+        justify-self: end;
+      }
+    }
+  }
+  
+  h1 {
+    background-color: white;
+    color: #41c1b2;
+    font-family: 'Baloo Paaji', cursive;
+    font-weight: normal;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 10px;
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  
+  .login-container, .signup-container {
+    color: white;
+  }
+
+  .login-container > h1, .signup-container > h1 {
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+  }
+  .login {
+    background-color: rgba(191, 216, 227, .4);
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 10px;
+   
+    margin-bottom: 10px;
+  }
+  .i-forgot {
+      padding: 10px 15px 10px 15px;
+  }
+  .login > div {
+    padding: 5px 0;
+  }
+
+  .login-container > h1, .signup-container > h1 {
+      text-align: center;
+      background-color:rgba(255, 255, 255, 0.61);
+  }
+  
+  input[type="submit"] {
+    border: 0px solid rgba(191, 216, 227, .8);
+    border-radius: 5px;
+    color: #fff;
+    background-color:rgb(43, 193, 191);
+    font-size: 110%;
+  }
+
+
+  .App-header {
+      margin-top: 20px;
+      padding-top: 20px;
+  }
+
+  .account > p > a {
+      display: inline;
+      font-weight: bold;
+      padding-bottom: 5px;
+      border-bottom: 2px solid white;
+  }
+
+  .contact > p > a {
+    display: inline;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+  }
+  
+  .account > p {
+      padding-top: 15px;
+      margin: 0px;
+      font-size: 15px;
+      line-height: 15px;
+  
+  }
+  input
+   {
+    border: 2px solid rgba(191, 216, 227, .8);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 110%;
+    width: 100%;
+  }
+  
+  .actions a {
+    font-size: 80%;
+  }

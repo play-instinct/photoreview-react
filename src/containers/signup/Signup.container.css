@@ -1,0 +1,30 @@
+.test > label {
+    text-align: left;
+    display: grid;
+    font-size: 18px;
+    width: 60%;
+    padding-left: 10px;
+}
+
+
+.login > div {
+
+    border-bottom: 1px solid #ffffffa3;
+    padding: 15px;
+}
+
+.expl {
+    font-size: 12px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.login-container, .signup-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.api-footer {
+    display: none;
+}

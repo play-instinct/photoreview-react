@@ -1,0 +1,10 @@
+.app-title {
+    background-color:inherit;
+    color: white;
+}
+
+
+a.sign-up-btn {
+    width: 40%;
+    margin: 20px auto;
+}
