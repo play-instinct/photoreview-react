@@ -3,7 +3,7 @@ import './Signup.container.css';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { createUser } from '../../actions';
-import { Button, Checkbox, Form, Segment, Icon } from 'semantic-ui-react';
+import { Button, Checkbox, Form, Segment, Icon, Modal } from 'semantic-ui-react';
 import { Container, Grid, Divider } from 'semantic-ui-react';
 import { Header } from 'semantic-ui-react';
 
@@ -42,13 +42,24 @@ render () {
       <Form.Field>
         <label>Connect your Social Media</label>
         <Divider/>
-
+       
         <Grid columns={3}>
           <Grid.Row>
             <Grid.Column>
-            <Button color='instagram' compact>
+            <Modal trigger={<Button color='instagram' compact>
               <Icon name='instagram' /> Instagram
-            </Button>
+            </Button>}>
+    
+    <Modal.Header>Connect Instagram</Modal.Header>
+    <Modal.Content image>
+      <Modal.Description>
+        <Header>Connect Instagram</Header>
+        <p>We've found the following gravatar image associated with your e-mail address.</p>
+        <p>Is it okay to use this photo?</p>
+      </Modal.Description>
+    </Modal.Content>
+  </Modal>
+            
             </Grid.Column>
             <Grid.Column>
             <Button color='facebook' compact>
