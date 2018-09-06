@@ -14,10 +14,10 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.1",
+    "react-semantic-redux-form": "^1.2.6",
     "redux": "^3.6.0",
     "redux-form": "^6.8.0",
     "redux-thunk": "^2.1.0",
-    "semantic-ui": "^2.3.3",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "0.82.3"
   },
