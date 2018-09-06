@@ -20,7 +20,7 @@ class Signup extends React.Component {
 render () {
   return (
     <Grid container stackable columns={2}>
-    <Grid.Column>
+    <Grid.Column width={8}>
     <Container>   
     <Header as='h3' dividing>
       Sign Up
