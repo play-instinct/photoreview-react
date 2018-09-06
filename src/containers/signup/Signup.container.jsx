@@ -19,6 +19,8 @@ class Signup extends React.Component {
 
 render () {
   return (
+    <Grid container stackable columns={2}>
+    <Grid.Column>
     <Container>   
     <Header as='h3' dividing>
       Sign Up
@@ -39,7 +41,9 @@ render () {
       </Form.Field>
       <Form.Field>
         <label>Connect your Social Media</label>
-        <Grid columns={3} divided>
+        <Divider/>
+
+        <Grid columns={3}>
           <Grid.Row>
             <Grid.Column>
             <Button color='instagram' compact>
@@ -70,6 +74,29 @@ render () {
 
 
   </Container>
+    </Grid.Column>
+    <Grid.Column>
+      <Container>
+      <Header as='h4'>Why do I have to connect a social media account?</Header>
+      <p>Your connected official social media account is used for verification of your identity as the model and person you claim to be.</p> 
+
+
+<p>It allows us to confirm that the reviews
+posted on this website are by real models voicing their experiences, and not anyone
+attempting to spread deflammatory 
+or otherwise false information.</p>
+
+
+
+<p>Your account will not be approved unless
+your official social media account is
+connected.</p> 
+
+
+      </Container>
+    </Grid.Column>
+
+  </Grid>
   ) 
 }
 }

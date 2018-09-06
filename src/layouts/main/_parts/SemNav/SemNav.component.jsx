@@ -17,7 +17,7 @@ export default class MenuExampleColored extends Component {
       const { activeItem } = this.state
   
       return (
-        <Menu fluid widths={4} size='huge' borderless>
+        <Menu fluid widths={4} size='huge' borderless stackable>
           <Menu.Item header className ="logo-header-nav">
            <img src={logo} className="logo"/>
                 Hindsight
