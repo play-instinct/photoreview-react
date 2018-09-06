@@ -1,0 +1,22 @@
+#root > div > div > div.ui.huge.borderless.fluid.four.item.menu {
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+    box-shadow: none;
+    border: 0px;
+    font-style: italic;
+
+}
+
+
+#root > div > div > div.ui.huge.borderless.fluid.four.item.menu > a {
+    color: #919799;
+}
+
+
+.logo-header-nav {
+    color: #4fdcd0 !important;
+}
+
+.overall-nav {
+    display: none;
+}

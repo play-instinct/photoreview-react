@@ -1,44 +1,39 @@
-import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import './SemNav.layout.css';
 
-const colorsA = ['red', 'orange', 'yellow', 'olive', 'green', 'teal']
-const colorsB = ['blue', 'violet', 'purple', 'pink', 'brown', 'grey']
+import PropTypes from 'prop-types'; 
+import logo from './img/photoreview-logo.svg'
+import { connect } from 'react-redux';
+
 
 export default class MenuExampleColored extends Component {
-  state = { activeA: colorsA[0], activeB: colorsB[0] }
+    state = {}
 
-  handleAClick = (e, { name }) => this.setState({ activeA: name })
-  handleBClick = (e, { name }) => this.setState({ activeB: name })
-
-  render() {
-    const { activeA, activeB } = this.state
-
-    return (
-      <div>
-        <Menu>
-          {colorsA.map(c => (
-            <Menu.Item
-              key={c}
-              name={c}
-              active={activeA === c}
-              color={c}
-              onClick={this.handleAClick}
-            />
-          ))}
+    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  
+    render() {
+      const { activeItem } = this.state
+  
+      return (
+        <Menu fluid widths={4} size='huge' borderless>
+          <Menu.Item header className ="logo-header-nav">
+           <img src={logo} className="logo"/>
+                Hindsight
+            </Menu.Item>
+          <Menu.Item
+            name='about'
+            active={activeItem === 'about'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item name='terms' active={activeItem === 'terms'} onClick={this.handleItemClick} />
+          <Menu.Item
+            name='signUp'
+            active={activeItem === 'signUp'}
+            onClick={this.handleItemClick}
+          />
         </Menu>
-
-        <Menu>
-          {colorsB.map(c => (
-            <Menu.Item
-              key={c}
-              name={c}
-              active={activeB === c}
-              color={c}
-              onClick={this.handleBClick}
-            />
-          ))}
-        </Menu>
-      </div>
-    )
-  }
+      )
+    }
 }

@@ -8,3 +8,17 @@ a.sign-up-btn {
     width: 40%;
     margin: 20px auto;
 }
+
+#header-logo {
+    margin: 0px;
+    padding: 0px;
+    height: 150px;
+    width: auto;
+}
+
+#tagline {
+    color: #919799;
+    font-style: italic;
+    font-weight: 300;
+
+}

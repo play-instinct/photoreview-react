@@ -1,19 +1,19 @@
 import React from 'react';
-// import logo from './img/logo.svg'
+import logo from './img/photoreview-logo.svg'
 import './LandingPage.container.css';
 import { Link } from 'react-router-dom';
+import { Container } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
+
+
 const LandingPage = () => (
-  <div>
-     <header className="app-header">
-      {/* <img src={logo} className="logo"/> */}
-      <h1 className="app-title">EduRide</h1>
-      <hr/>
-      <p className="app-intro">
-      Landing Page Contaner
-      </p>
-    </header>
+  <Container textAlign ="center">
+     <Header>
+      <img src={logo} className="logo" id="header-logo"/>
+    </Header>
+    <Header as='h2' id="tagline">Praise a great shoot experience. Stay informed about the bad. </Header>
     <div className="action-container"><Link to="/signup" className="sign-up-btn">Sign Up</Link></div>
-  </div>
+  </Container>
 );
 
 export default LandingPage;
