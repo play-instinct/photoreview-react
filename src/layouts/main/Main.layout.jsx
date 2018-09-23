@@ -11,13 +11,10 @@ import { Container } from 'semantic-ui-react'
 const Main = props => (
   <div className="App">
   <Container>
-  <SemNav></SemNav>
-    <Container className="App-header">
+  <SemNav isLoggedIn={props.user.isLoggedIn} username={props.user.email} ></SemNav>
+    <Container className="App-Content">
       {props.children}
     </Container>
-    <div className = "overall-nav">
-      <Nav isLoggedIn={props.user.isLoggedIn} username={props.user.username} />
-    </div>
   </Container>
   </div>
 )

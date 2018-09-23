@@ -20,3 +20,20 @@
 .overall-nav {
     display: none;
 }
+
+
+#nav-logo{
+    height: 35px;
+    width: 35px;
+}
+
+#main-menu{
+    border: 0px;
+    box-shadow: 0 0 0px 0 rgba(34,36,38,.15);
+}
+
+
+.logo {
+    width: 35px;
+    height: 35px;
+}

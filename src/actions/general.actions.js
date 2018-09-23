@@ -1,3 +1,8 @@
+import appConfig from '../config/appConfig';
+
+
+
+
 // 401 Unauthorized Redirect
 export const UNAUTHORIZED_REDIRECT = 'UNAUTHORIZED_REDIRECT';
  
@@ -18,3 +23,21 @@ export const SHOW_ALERT_MESSAGE = 'SHOW_ALERT_MESSAGE';
  
 // Reset alert message
 export const RESET_ALERT_MESSAGE = 'RESET_ALERT_MESSAGE';
+
+
+export const FETCH_STATUS_REQUEST_TRIGGERED = 'FETCH_STATUS_REQUEST_TRIGGERED';
+export const FETCH_STATUS_REQUEST_SUCCESS = 'FETCH_STATUS_REQUEST_SUCCESS';
+export const FETCH_STATUS_REQUEST_FAILURE = 'FETCH_STATUS_REQUEST_FAILURE';
+
+
+
+
+export function fetchStatus() {
+    const promise = fetch(`${appConfig.STATUS_ENDPOINT}`);
+    return {
+        onRequest: FETCH_STATUS_REQUEST_TRIGGERED,
+        onSuccess: FETCH_STATUS_REQUEST_SUCCESS,
+        onFailure: FETCH_STATUS_REQUEST_FAILURE,
+        promise,
+    };
+}

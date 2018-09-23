@@ -8,32 +8,54 @@ import logo from './img/photoreview-logo.svg'
 import { connect } from 'react-redux';
 
 
-export default class MenuExampleColored extends Component {
-    state = {}
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  
+class SemNav extends React.Component {
     render() {
-      const { activeItem } = this.state
-  
-      return (
-        <Menu fluid widths={4} size='huge' borderless stackable>
-          <Menu.Item header className ="logo-header-nav">
-           <img src={logo} className="logo"/>
-                Hindsight
+    if (this.props.isLoggedIn) { 
+        return (
+          <Menu fluid widths={5} size='huge' borderless stackable id="main-menu">
+          <Menu.Item className ="logo-header-nav">
+          <Link to="/"><img src={logo} className="logo"/></Link>
+
             </Menu.Item>
-          <Menu.Item
-            name='about'
-            active={activeItem === 'about'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item name='terms' active={activeItem === 'terms'} onClick={this.handleItemClick} />
-          <Menu.Item
-            name='signUp'
-            active={activeItem === 'signUp'}
-            onClick={this.handleItemClick}
-          />
+            <Menu.Item>
+            <Link to="/review" className="main">Submit Review</Link>
+          </Menu.Item>
+            <Menu.Item>
+            <Link to="/photographer-search" className="main">Photographer Search</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/dashboard" className="main">Dashboard</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/terms" className="main">Terms</Link>
+          </Menu.Item>
         </Menu>
       )
     }
+    else return (            
+      <Menu fluid widths={5} size='huge' borderless stackable id="main-menu">
+      <Menu.Item className ="logo-header-nav">
+
+          <Link to="/">HindSight</Link>
+        </Menu.Item>
+        <Menu.Item>
+        <Link to="/about" className="main">About</Link>
+      </Menu.Item>
+        <Menu.Item>
+        <Link to="/terms" className="main">Terms</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/signup" className="main">Sign Up</Link>
+      </Menu.Item>
+      <Menu.Item>
+        <Link to="/login" className="main">Login</Link>
+      </Menu.Item>
+    </Menu>
+    )
+  
+    }
 }
+
+
+export default SemNav;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'; 
-// import logo from './img/logo.svg'
+import logo from './img/logo.svg'
 import { connect } from 'react-redux';
 
 
@@ -11,10 +11,10 @@ class Nav extends React.Component {
       return (
         <nav className="navbar navbar-default">
       <div className="container-all">
-          <div className="navbar-header">
+          <div className="navbar-menu-container">
           <ul className="navigation">
             <li className="login-link">
-              {/* <Link to="/"><img src={logo} className="logo"/>TBD</Link> */}
+              <Link to="/"><img src={logo} className="logo"/></Link>
               </li>
           </ul>
            

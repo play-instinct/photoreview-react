@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/';
 
 const initialState = {
   isFetchingUserBasicInfo: false,
-  isFetchingRide: false, 
+  isFetchingRide: false,
+  statusText: 'No String Set'
 };
 
 export default function appState(state = initialState, action) {
@@ -37,6 +38,20 @@ export default function appState(state = initialState, action) {
         isFetchingRide: initialState.isFetchingRide,
       };
     }
+
+    case actionTypes.FETCH_STATUS_REQUEST_SUCCESS:{
+      return {
+        ...state,
+        statusText: action.response.processId,
+      };
+    }
+    case actionTypes.FETCH_STATUS_REQUEST_FAILURE:{
+      return {
+        ...state,
+        statusText: 'not working',
+      };
+    }
+
     default: {
       return state;
     }

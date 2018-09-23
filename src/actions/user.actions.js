@@ -39,18 +39,13 @@ export const FETCH_USER_SIGNUP_REQUEST_SUCCESS = 'FETCH_USER_SIGNUP_REQUEST_SUCC
 export const FETCH_USER_SIGNUP_REQUEST_FAILURE = 'FETCH_USER_SIGNUP_REQUEST_FAILURE';
 export const CREATE_USER_REQUEST_SUCCESS = 'CREATE_USER_REQUEST_SUCCESS';
 
-export function createUser(name, email, password, phoneNumber, address, is_driver) {
+export function createUser(email, password) {
     const promise = fetch(`${appConfig.USER_ENDPOINT}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           email,
-          name,
-          password,
-          phoneNumber,
-          address,
-          password,
-          is_driver,
+          password
         }),
     });
     return {
