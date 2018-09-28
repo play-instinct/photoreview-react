@@ -9,9 +9,8 @@ import LandingPage from './containers/landing-page/LandingPage.container';
 import Status from './containers/status/Status.container';
 import About from './containers/about/about.container';
 import Review from './containers/review/review.container';
+import Photographer from './containers/photographer/photographer.container';
 import PhotographerSearch from './containers/photographer-search/photographer-search.container';
-
-
 import PrivateRoute from './components/PrivateRoute.component';
 
 const AppRouter = () => (
@@ -27,6 +26,9 @@ const AppRouter = () => (
           <Route exact path="/dashboard" component={ Dashboard } />
           <Route exact path="/review" component={ Review } />
           <Route exact path="/photographer-search" component={ PhotographerSearch } />
+          <Route exact path="/photographer" component={ Photographer} />
+
+
 
 
 

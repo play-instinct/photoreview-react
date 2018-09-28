@@ -29,19 +29,9 @@
 
 #main-menu{
     border: 0px;
-    box-shadow: 0 0 0px 0 rgba(34,36,38,.15);
-    font-size: 14px;
-
 }
 
-a.main {
-    color: #919799;
-}
 
-a.main:hover {
-    color: #46ddd0;
-
-}
 .logo {
     width: 35px;
     height: 35px;

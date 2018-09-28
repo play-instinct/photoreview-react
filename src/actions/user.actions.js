@@ -25,6 +25,7 @@ export const FETCH_USER_LOGIN_REQUEST_SUCCESS = 'FETCH_USER_LOGIN_REQUEST_SUCCES
 export const FETCH_USER_LOGIN_REQUEST_FAILURE = 'FETCH_USER_LOGIN_REQUEST_FAILURE';
 
 const handleLoginResponse = (response, dispatch) => {
+    console.log(response);
   sessionStorage.setItem(appConfig.TOKEN_CONTENT_KEY, response.token);
   dispatch({
       type: FETCH_USER_LOGIN_REQUEST_SUCCESS,

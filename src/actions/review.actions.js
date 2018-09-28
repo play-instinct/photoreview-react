@@ -24,6 +24,7 @@ export function createReview(body) {
         headers: {'Content-Type': 'application/json',
                 Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY)},
         body: JSON.stringify(body),
+        
     });
     return {
         onRequest: REQUEST_TO_CREATE_REVIEW_TRIGGERED,
@@ -33,7 +34,7 @@ export function createReview(body) {
     };
   }
 
-
+//need to add 'review submitted for approval' message to dashboard top
   const handleCreateReviewResponse = (response, dispatch) => {
     dispatch({
         type: REQUEST_TO_CREATE_REVIEW_SUCCESS,

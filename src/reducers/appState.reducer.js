@@ -2,7 +2,6 @@ import * as actionTypes from '../actions/';
 
 const initialState = {
   isFetchingUserBasicInfo: false,
-  isFetchingRide: false,
   statusText: 'No String Set'
 };
 

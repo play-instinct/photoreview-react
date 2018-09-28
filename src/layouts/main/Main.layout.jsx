@@ -12,7 +12,7 @@ const Main = props => (
   <div className="App">
   <Container>
   <SemNav isLoggedIn={props.user.isLoggedIn} username={props.user.email} ></SemNav>
-    <Container className="App-Content">
+    <Container className="App-Content" role={props.user.role}  >
       {props.children}
     </Container>
   </Container>

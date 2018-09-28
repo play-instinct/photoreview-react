@@ -5,16 +5,32 @@ import { FormInput, fieldValidators, FormDatePicker, FormTextArea } from 'semant
 import { Button, Checkbox, Form, Segment, Icon, Modal, Header, Message, Rating } from 'semantic-ui-react';
 import { Container, Grid, Divider } from 'semantic-ui-react';
 import { fetchUserLogin } from '../../actions';
+import './review.container.css';
+import { createPhotographer} from '../../actions';
+
 
 
 
 class Review extends React.Component {
-  submitHandler(val){
-    const email = val.email;
-    const password = val.password;
-    this.props.fetchUserLogin(email, password);
-    
+  submitHandler(val) {
+    const body = {
+      name : val.photographerName,
+      photographerAlias : val.photographerAlias,
+      website_url : val.website_url,
+      instagram_url :val.instagram_url,
+      created_by : val.created_by,
+      status : val.status,
+      encounterDate : val.encounterDate,
+      encounterLocation : val.encounterLocation,
+      starRating : val.starRating,
+      reviewText : val.reviewText,
+      author : val.author
+    }
+    console.log(body);
+    this.props.createPhotographer(body)  
   }
+
+
 render () {
   return (
     <Grid container stackable columns={2}>
@@ -64,7 +80,7 @@ render () {
         <Message size='mini'> *  Encounter dates are kept private from other users to protect your anonymity. </Message>
         <Field  component={FormInput}
                     name="activeLocation" 
-                    label="Active Location"
+                    label="Encounter Location"
                     type="text"
                     validate={fieldValidators.required}
                     width={16}>
@@ -88,10 +104,29 @@ render () {
     <Header as='h4' dividing>
         Review Writing Tips
     </Header>
+    <p>All reviews submitted to Hindsight must be approved by an Administrator before publication.</p>
+    <p>All reviews will always be posted anonymously to protect your identity. 
+We will never reveal your information. 
+We encourage you to use discretion 
+when writing reviews. </p>
     <Header as ="h4" dividing>
     FAQ
     </Header>
+    <p class="faq-question">
+      How long does the Review Approval Process take?
+    </p>
+    <p>The review process usually takes up to 4 days after initial </p>
+    
+    <p class="faq-question">
+      Can I delete reviews after they are approved?
+    </p>
 
+     <p class="faq-question">
+      How anonymous is my review?
+    </p>
+    <p class="faq-question">
+      Who can see an approved review?
+    </p>
   </Grid.Column>
   
   </Grid>
@@ -100,9 +135,10 @@ render () {
 }
 
 const mapStateToProps = state => ({
-
+  appState: state.appState,
+  user: state.user,
 });
 
 export default reduxForm({
   form: 'review'
-})(connect(mapStateToProps, {fetchUserLogin})(Review))
+})(connect(mapStateToProps, {createPhotographer})(Review))

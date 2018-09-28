@@ -12,7 +12,7 @@ export default {
   USER_ENDPOINT: `${MAIN_APP_AUTHORITY}/users`,
   STATUS_ENDPOINT: `${MAIN_APP_AUTHORITY}/status`,
   /**
-   * Path used to fetch rides
+   * Path used to fetch photographers
    */
   PHOTOGRAPHERS_ENDPOINT: `${MAIN_APP_AUTHORITY}/photographers`,
 
