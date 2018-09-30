@@ -8,13 +8,13 @@
     padding: 10px 20px;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 18px;
     border-bottom: 1px solid #aaa;
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
     border-radius: 0px;
-    width: 238px;
+    width: 308px;
   }
   
   .react-autosuggest__input--focused {
@@ -38,12 +38,12 @@
     border-bottom: 1px solid #aaa;
     background-color: #fff;
     font-family: Helvetica, sans-serif;
-
     font-weight: 600;
     font-size: 16px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 40px;
     z-index: 2;
+    border-radius: 0px;
   }
   
   .react-autosuggest__suggestions-list {

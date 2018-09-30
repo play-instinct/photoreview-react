@@ -14,16 +14,16 @@ import { createPhotographer} from '../../actions';
 class Review extends React.Component {
   submitHandler(val) {
     const body = {
+      website_url : val.website_url,
       name : val.photographerName,
       photographerAlias : val.photographerAlias,
-      website_url : val.website_url,
-      instagram_url :val.instagram_url,
+      instagram_url : val.instagram_url,
       created_by : val.created_by,
       status : val.status,
-      encounterDate : val.encounterDate,
-      encounterLocation : val.encounterLocation,
+      encounterDate : val.EncounterDate,
+      encounterLocation : val.activeLocation,
       starRating : val.starRating,
-      reviewText : val.reviewText,
+      reviewText : val.ExperienceSummary,
       author : val.author
     }
     console.log(body);
@@ -56,14 +56,14 @@ render () {
                     width={16}>
         </Field>
         <Field  component={FormInput}
-                    name="photographerWebsite" 
+                    name="website_url" 
                     label="Photographer's Website"
                     type="text"
                     validate={fieldValidators.required}
                     width={16}>
         </Field>
         <Field  component={FormInput}
-                    name="InstagramUrl" 
+                    name="instagram_url" 
                     label="Instagram URL"
                     type="text"
                     validate={fieldValidators.required}
@@ -92,7 +92,7 @@ render () {
         </Form.Field>
         <Field
             component={FormTextArea}
-            name="Experience Summary" 
+            name="ExperienceSummary" 
             label="Experience Summary"
             validate={fieldValidators.required} />
         <Divider/>
@@ -112,19 +112,19 @@ when writing reviews. </p>
     <Header as ="h4" dividing>
     FAQ
     </Header>
-    <p class="faq-question">
+    <p className="faq-question">
       How long does the Review Approval Process take?
     </p>
     <p>The review process usually takes up to 4 days after initial </p>
     
-    <p class="faq-question">
+    <p className="faq-question">
       Can I delete reviews after they are approved?
     </p>
 
-     <p class="faq-question">
+     <p className="faq-question">
       How anonymous is my review?
     </p>
-    <p class="faq-question">
+    <p className="faq-question">
       Who can see an approved review?
     </p>
   </Grid.Column>
@@ -139,6 +139,14 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
+// export default reduxForm({
+//   form: 'review'
+// })(connect(mapStateToProps, {createPhotographer})(Review))
+
+
+
+const connectedReview = connect(mapStateToProps, { createPhotographer })(Review)
 export default reduxForm({
-  form: 'review'
-})(connect(mapStateToProps, {createPhotographer})(Review))
+  form: 'review',
+  enableReinitialize: true
+})(connectedReview)

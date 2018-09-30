@@ -1,0 +1,74 @@
+#review-result-rating > .active.icon {
+    color: #46ddd0 !important;
+    text-shadow: none !important;
+}
+
+#review-result-container {
+   /* background-color: #8080800d; */
+   border: 2px solid #8080800d;
+   padding: 15px;
+   background-color: white;
+   
+}
+
+#overall-container-review-result{
+
+}
+
+
+#review-result-container > .column > .header {
+    font-size: 11px;
+    font-weight: normal;
+    padding-top: 8px;
+    text-transform: uppercase;
+    color: #4ac1b7;
+
+}
+
+#review-result-container > .column {
+    border-bottom: 1px solid rgba(145, 151, 153, 0.28);
+    color: #6b7173;
+    
+
+}
+
+#review-result-left{
+    margin-top: 15px;
+    border: 2px solid #8080800d;
+    background-color: white;
+
+    /* background-color: #8080800d; */
+}
+
+#review-result-left > h3.header {
+    color: #4ac1b7;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 11px;
+    background-color: white;
+
+}
+
+
+.ui.checkbox input:checked~.box:after, .ui.checkbox input:checked~label:after {
+    color: #4ac1b7;
+}
+
+.ui.checkbox label, .ui.checkbox+label{
+    color: #6b7173;
+    text-transform: uppercase;
+}
+
+.ui.checkbox {
+    border-bottom: 1px solid rgba(145, 151, 153, 0.28);
+    padding: 10px;
+}
+
+#admin-container > .row > .column > button {
+    background-color: #4ac1b7;
+}
+
+
+#admin-container{
+    
+}

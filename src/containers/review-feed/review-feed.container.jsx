@@ -6,14 +6,16 @@ import { Link } from 'react-router-dom';
 import { FormInput, fieldValidators} from 'semantic-redux-form-fields';
 import { Container, Grid, Divider, Form, Search,  Header, Segment, Icon, Item, Label, Rating } from 'semantic-ui-react';
 import './review-feed.container.css';
+import { fetchReview } from '../../actions'
 
 
 class ReviewFeed extends React.Component {
     componentDidMount(){
+      // this.props.fetchReview(this.props.match.params.id);
     };
     render(){
         return (
-          <Grid id="review-feed-container">
+          <Grid centered columns={1} id="review-feed-container">
             <Grid.Row textAlign='left'>
             <Grid.Column width={12} textAlign='left'>
               <Item.Group divided link>

@@ -37,7 +37,7 @@ export function createPhotographer(body) {
         type: REQUEST_TO_CREATE_PHOTOGRAPHER_SUCCESS,
         response,
     });
-    dispatch(push('/dashboard'));
+    dispatch(push('/photographer-search'));
 };
 
 

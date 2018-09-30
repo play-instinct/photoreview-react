@@ -1,0 +1,10 @@
+#review-sub-menu-container > .menu {
+    border: 0px;
+    box-shadow: none;
+}
+
+
+#review-sub-menu-container > .menu > a.item {
+    border: 0px;
+    box-shadow: none;
+}
