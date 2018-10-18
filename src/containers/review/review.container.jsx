@@ -24,11 +24,17 @@ class Review extends React.Component {
       encounterLocation : val.activeLocation,
       starRating : val.starRating,
       reviewText : val.ExperienceSummary,
-      author : val.author
+      author : val.author,
+      
     }
     console.log(body);
     this.props.createPhotographer(body)  
   }
+
+
+handleRate = (e, { rating, maxRating }) => (
+  this.props.change("starRating", rating)
+)
 
 
 render () {
@@ -67,7 +73,7 @@ render () {
                     label="Instagram URL"
                     type="text"
                     validate={fieldValidators.required}
-                    width={16}>
+                    width={0}>
         </Field>
         <Field  component={FormDatePicker}
                     name="EncounterDate" 
@@ -88,7 +94,7 @@ render () {
         </Field>
         <Form.Field>
             <label>Star Rating</label>
-            <Rating icon='star' defaultRating={0} maxRating={5} size='large'/>
+            <Rating icon='star' defaultRating={0} maxRating={5} size='large' onRate={this.handleRate}/>
         </Form.Field>
         <Field
             component={FormTextArea}
@@ -139,9 +145,6 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-// export default reduxForm({
-//   form: 'review'
-// })(connect(mapStateToProps, {createPhotographer})(Review))
 
 
 

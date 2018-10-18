@@ -2,7 +2,7 @@ export default {
   CONFIG_NAME: 'Default Config',
   ENV: process.env.NODE_ENV,
   APP_ID: 'pxf',
-  MAIN_APP_AUTHORITY: 'https://heroku-app/',
+  MAIN_APP_AUTHORITY: 'http://localhost:3000/api/',
   SHOW_REDUX_DEV_TOOLS: false,
   TOKEN_CONTENT_KEY: 'userToken',
   UNAUTHORIZED_ENDPOINT: '/login',

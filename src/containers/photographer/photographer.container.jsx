@@ -7,7 +7,8 @@ import { FormInput, fieldValidators} from 'semantic-redux-form-fields';
 import { Container, Grid, Divider, Form, Search,  Header, Segment, Icon, Item, Label, Rating } from 'semantic-ui-react';
 import './photographer.container.css';
 import ReviewFeed from '../review-feed/review-feed.container';
-
+import { fetchUserLogin } from '../../actions';
+import { fetchPhotographer } from '../../actions';
 
 
 
@@ -15,18 +16,19 @@ import ReviewFeed from '../review-feed/review-feed.container';
 
 class Photographer extends React.Component {
   componentDidMount(){
-  };
+    console.log('test');
+    this.props.fetchPhotographer(this.props.match.params.id);
+  }
   render(){
     return (
-        <Container Grid>
+           <Container>
+            {this.props.photographer.currentPhotographer ? 
+                <Container>
                 <Header dividing  as='h1'  textAlign='center' id= "photographer-header" icon>
-               
-                  
-                Jennifer Hernandez
-
+                { this.props.photographer.currentPhotographer.name }
              <Icon name='smile outline' />
-                <Header.Subheader textAlign='center' className="photo-rating-text">Highly Approved</Header.Subheader>
-
+                <Header.Subheader className="photo-rating-text">Highly Approved</Header.Subheader>
+                { this.props.photographer.currentPhotographer.createdAt }
             <Header.Subheader>             
                 <Rating icon='star' 
                 defaultRating={4} 
@@ -34,34 +36,51 @@ class Photographer extends React.Component {
                 disabled={true} 
                 size='tiny' id="star-rating"/>
             </Header.Subheader>
-                <Header.Subheader textAlign='center'>
-                <span className ="photo-header-label">Known Aliases:</span> @indubiousbattle, Jenn Nervosa, Jenn
-                </Header.Subheader>
-                <Header.Subheader textAlign='center'>
-                <span className ="photo-header-label">Active in:</span> 
-                <Link to="/approved-reviews" className="photo-link">Northern California</Link>
-
+                <Header.Subheader>
+                    <span className ="photo-header-label">Known Aliases: </span> 
+                    { this.props.photographer.currentPhotographer.photographerAlias }
+                    </Header.Subheader>
+                    <Header.Subheader>
+                    <span className ="photo-header-label">Active in:</span> 
+                    <Link to="/approved-reviews" className="photo-link">
+                        { this.props.photographer.currentPhotographer.encounterLocation }
+                      
+                       
+                    </Link>
                 </Header.Subheader>
             </Header>
                 <Grid columns={16} textAlign='center'>
                 <Divider/>
             </Grid>
             <ReviewFeed/>
-            </Container> 
+            </Container>
+           : 
+            <div>couldn't find this photographer.</div> }  
+           </Container>
+
             ) 
       
   }
 }
     
-Photographer.defaultProps = {
+
+const mapStateToProps = state => ({
+    appState: state.appState,
+    user: state.user,
+    photographer: state.photographer,
+    reviews: state.photographer.reviews
     
-}
+  });
+  
 
-const mapStatetoProps = state => ({
+  
 
-});
-
+const connectedPhotographerResult = connect(mapStateToProps, {fetchPhotographer})(Photographer)
 
 export default reduxForm({
-  form: 'search'
-})(connect(mapStatetoProps)(Photographer))
+  form: 'photographer',
+  enableReinitialize: true
+})(connectedPhotographerResult)
+
+
+

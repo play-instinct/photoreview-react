@@ -8,13 +8,14 @@ import { FormInput, fieldValidators} from 'semantic-redux-form-fields';
 import { Container, Grid, Divider, Form, Search,  Header, Segment, Icon } from 'semantic-ui-react';
 import AdminSearch from '../AdminSearch/AdminSearch.container';
 import './photographer-search.container.css';
+import { fetchAllPhotographerNames } from '../../actions';
 import PhotoSearch from '../PhotographerSearch/photosearch-autosuggest.container';
 
 
 
 class PhotographerSearch extends React.Component {
     componentDidMount(){
-        // this.props.fetchRide(this.props.match.params.id);
+        this.props.fetchAllPhotographerNames();
     }
     render() {
         return(
@@ -45,12 +46,12 @@ class PhotographerSearch extends React.Component {
 
     }
     
- PhotographerSearch.defaultProps = {
-    
-}
+
 
 const mapStatetoProps = state => ({
-
+    appState: state.appState,
+    user: state.user,
+    photographersNames: state.photographer.names,
 });
 
 

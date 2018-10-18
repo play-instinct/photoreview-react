@@ -6,12 +6,11 @@ import { Link } from 'react-router-dom';
 import { FormInput, fieldValidators} from 'semantic-redux-form-fields';
 import { Container, Grid, Divider, Form, Search,  Header, Segment, Icon, Item, Label, Rating } from 'semantic-ui-react';
 import './review-feed.container.css';
-import { fetchReview } from '../../actions'
+
 
 
 class ReviewFeed extends React.Component {
     componentDidMount(){
-      // this.props.fetchReview(this.props.match.params.id);
     };
     render(){
         return (
@@ -21,35 +20,15 @@ class ReviewFeed extends React.Component {
               <Item.Group divided link>
                 <Item>
                   <Item.Content>
-                    <Item.Header as='a'>Jennifer Hernandez - @indubiousbattle</Item.Header>
+                    <Item.Header as='a'> Shoot Review - { this.props.photographer.reviews[0].encounterDate} </Item.Header>
                     <Item.Meta>
-                    <Rating maxRating={5} defaultRating={5} icon='star' size='large' />
+                    <Rating maxRating={5} defaultRating={ this.props.photographer.reviews[0].starRating} icon='star' size='large' disabled/>
                     </Item.Meta>
                     <Item.Description>
-                      <p>"Jen was professional and creative during our shoot. She brought a variety
-                      of cool and interesting pieces from her vintage wadrobe for styling which
-                      really helped me get in the mood/esthetic of the shoot. Can't wait to see
-                      the images!" </p>   
+                      <p> { this.props.photographer.reviews[0].reviewText}</p>   
                     </Item.Description>
                     <Item.Extra>
-                      <p>reviewed by a model from Northern California May 20th 2018.</p>
-                    </Item.Extra>
-                  </Item.Content>
-                </Item>
-                <Item>
-                  <Item.Content>
-                    <Item.Header as='a'>Jennifer Hernandez - @indubiousbattle</Item.Header>
-                    <Item.Meta>
-                    <Rating maxRating={5} defaultRating={5} icon='star' size='large' />
-                    </Item.Meta>
-                    <Item.Description>
-                      <p>"Jen was professional and creative during our shoot. She brought a variety
-                      of cool and interesting pieces from her vintage wadrobe for styling which
-                      really helped me get in the mood/esthetic of the shoot. Can't wait to see
-                      the images!" </p>   
-                    </Item.Description>
-                    <Item.Extra>
-                      <p>reviewed by a model from Northern California May 20th 2018.</p>
+                      <p>reviewed by a model in { this.props.photographer.reviews[0].createdAt}</p>
                     </Item.Extra>
                   </Item.Content>
                 </Item>
@@ -65,6 +44,12 @@ class ReviewFeed extends React.Component {
 
 
 const mapStatetoProps = state => ({
+
+  appState: state.appState,
+  user: state.user,
+  photographer: state.photographer,
+  reviews: state.photographer.reviews
+  
 
 });
 

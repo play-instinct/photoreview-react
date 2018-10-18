@@ -17,6 +17,9 @@ export const FETCH_PHOTOGRAPHER_REQUEST_TRIGGERED = 'FETCH_PHOTOGRAPHER_REQUEST_
 export const FETCH_PHOTOGRAPHER_REQUEST_SUCCESS = 'FETCH_PHOTOGRAPHER_REQUEST_SUCCESS';
 export const FETCH_PHOTOGRAPHER_REQUEST_FAILURE = 'FETCH_PHOTOGRAPHER_REQUEST_FAILURE';
 
+export const FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_TRIGGERED = 'FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_TRIGGERED';
+export const FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_SUCCESS = 'FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_SUCCESS';
+export const FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_FAILURE = 'FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_FAILURE';
 
 export function createPhotographer(body) {
     const promise = fetch(`${appConfig.PHOTOGRAPHERS_ENDPOINT}`, {
@@ -33,17 +36,23 @@ export function createPhotographer(body) {
   }
 
   const handleCreatePhotographerResponse = (response, dispatch) => {
+    console.log(response);
     dispatch({
         type: REQUEST_TO_CREATE_PHOTOGRAPHER_SUCCESS,
         response,
     });
-    dispatch(push('/photographer-search'));
+    dispatch(push(`/review-result/${response._id}`));
 };
 
 
 
 export function fetchAllPhotographers() {
-    const promise = fetch(`${appConfig.PHOTOGRAPHERS_ENDPOINT}`);
+    const promise = fetch(`${appConfig.PHOTOGRAPHERS_ENDPOINT}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY), 
+        },
+    });
     return {
         onRequest: FETCH_PHOTOGRAPHER_REQUEST_TRIGGERED,
         onSuccess: FETCH_PHOTOGRAPHER_REQUEST_SUCCESS,
@@ -52,8 +61,32 @@ export function fetchAllPhotographers() {
     };
 }
 
-export function fetchPhotogapher(id){ 
-    const promise = fetch(`${appConfig.RIDES_ENDPOINT}/${id}`)
+
+export function fetchAllPhotographerNames() {
+    console.log('fetch photographer names');
+    const promise = fetch(`${appConfig.PHOTOGRAPHERS_NAMES_ENDPOINT}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY), 
+        },
+    });
+    return {
+        onRequest: FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_TRIGGERED,
+        onSuccess: FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_SUCCESS,
+        onFailure: FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_FAILURE,
+        promise,
+    };
+}
+
+export function fetchPhotographer(id){
+    console.log(appConfig); 
+    console.log('fetch photographer triggered');
+    const promise = fetch(`${appConfig.PHOTOGRAPHERS_ENDPOINT}/${id}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY), 
+        },
+    });
     return {
         onRequest: FETCH_PHOTOGRAPHER_REQUEST_TRIGGERED,
         onSuccess: FETCH_PHOTOGRAPHER_REQUEST_SUCCESS,
@@ -61,3 +94,5 @@ export function fetchPhotogapher(id){
         promise,
     };
 }
+
+

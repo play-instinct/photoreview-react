@@ -15,6 +15,8 @@ export default {
    * Path used to fetch photographers
    */
   PHOTOGRAPHERS_ENDPOINT: `${MAIN_APP_AUTHORITY}/photographers`,
+  PHOTOGRAPHERS_NAMES_ENDPOINT: `${MAIN_APP_AUTHORITY}/photographers-names`,
+  REVIEWS_ENDPOINT: `${MAIN_APP_AUTHORITY}/reviews`,
 
 
 };

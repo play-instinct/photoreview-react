@@ -6,43 +6,21 @@ import { Link } from 'react-router-dom';
 import { FormInput, fieldValidators} from 'semantic-redux-form-fields';
 import { Container, Grid, Divider, Form, Search,  Header, Segment, Icon, Item, Label, Rating } from 'semantic-ui-react';
 import Autosuggest from 'react-autosuggest';
-
-//probably using the fetchallphotographers here, then using the data as suggestions
-
-// Imagine you have a list of languages that you'd like to autosuggest.
-const suggestions = [
-  {
-    name: 'Jennifer Hernadez'
-  },
-  {
-    name: 'Oliver Twist'
-  },
-  {
-    name: 'Thomas Landon'
-  },
-  {
-    name: 'Yekaterina Novikova'
-  },
-  {
-    name: 'Michal Slabej'
-  },
-];
-
-
-
-
-
-
+import { fetchAllPhotographerNames } from '../../actions';
 
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
-  return inputLength === 0 ? [] : suggestions.filter(sug =>
-    sug.name.toLowerCase().slice(0, inputLength) === inputValue
+  return inputLength === 0 ? [] : photographersNames.filter(photog =>
+    photog.name.toLowerCase().slice(0, inputLength) === inputValue
   );
 };
+
+
+
+// const suggestions = justNames(photographersNames);
 
 // When suggestion is clicked, Autosuggest needs to populate the input
 // based on the clicked suggestion. Teach Autosuggest how to calculate the
@@ -50,6 +28,7 @@ const getSuggestions = value => {
 const getSuggestionValue = suggestion => suggestion.name;
 
 // Use your imagination to render suggestions.
+//this is where we're going to add a link-click to the photographer page
 const renderSuggestion = suggestion => (
   <div>
     {suggestion.name}
@@ -57,6 +36,10 @@ const renderSuggestion = suggestion => (
 );
 
 class PhotoSearch extends React.Component {
+
+  componentDidMount(){
+      this.props.fetchAllPhotographerNames();
+  }
   constructor() {
     super();
 
@@ -75,6 +58,7 @@ class PhotoSearch extends React.Component {
     this.setState({
       value: newValue
     });
+    console.log('change to autosuggest');
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
@@ -117,9 +101,11 @@ class PhotoSearch extends React.Component {
 }
 
 
+
 const mapStateToProps = state => ({
     appState: state.appState,
     user: state.user,
+    photographersNames: state.photographer.names,
   });
   
-  export default connect(mapStateToProps)(PhotoSearch);
+  export default connect(mapStateToProps, {fetchAllPhotographerNames})(PhotoSearch);

@@ -2,6 +2,7 @@ import appConfig from '../config/appConfig';
 import { push } from 'react-router-redux';
 
 
+
 export const REQUEST_TO_CREATE_REVIEW_TRIGGERED = 'REQUEST_TO_CREATE_REVIEW_TRIGGERED';
 export const REQUEST_TO_CREATE_REVIEW_SUCCESS = 'REQUEST_TO_CREATE_REVIEW_SUCCESS';
 export const REQUEST_TO_CREATE_REVIEW_FAILURE = 'REQUEST_TO_CREATE_REVIEW_FAILURE';
@@ -46,7 +47,7 @@ export function createReview(body) {
 
 
 export function fetchAllReviews() {
-    const promise = fetch(`${appConfig.PHOTOGRAPHERS_ENDPOINT}`);
+    const promise = fetch(`${appConfig.REVIEW_ENDPOINT}`);
     return {
         onRequest: FETCH_REVIEWS_REQUEST_TRIGGERED,
         onSuccess: FETCH_REVIEWS_REQUEST_SUCCESS,
@@ -55,8 +56,24 @@ export function fetchAllReviews() {
     };
 }
 
+
+
+// export function ApproveReview() {
+//     const promise = fetch(`${appConfig.REVIEW_ENDPOINT/approve-review}`);
+//     return {
+//         onRequest: FETCH_REVIEWS_REQUEST_TRIGGERED,
+//         onSuccess: FETCH_REVIEWS_REQUEST_SUCCESS,
+//         onFailure: FETCH_REVIEWS_REQUEST_FAILURE,
+//         promise,
+//     };
+// }
+
 export function fetchReview(id){ 
-    const promise = fetch(`${appConfig.RIDES_ENDPOINT}/${id}`)
+    console.log(appConfig);
+    const promise = fetch(`${appConfig.REVIEWS_ENDPOINT}/${id}`, {
+        headers: {'Content-Type': 'application/json',
+                Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY)},
+    })
     return {
         onRequest: FETCH_REVIEW_REQUEST_TRIGGERED,
         onSuccess: FETCH_REVIEW_REQUEST_SUCCESS,

@@ -83,7 +83,10 @@ DashboardHeader.defaultProps = {
 }
 
 const mapStatetoProps = state => ({
-  role: state.user.role
+  role: state.user.role,
+  user: state.user,
+  users: state.users, 
+  reviews: state.users,
 });
 
 

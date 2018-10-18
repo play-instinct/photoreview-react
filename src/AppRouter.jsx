@@ -28,10 +28,9 @@ const AppRouter = () => (
           <Route exact path="/dashboard" component={ Dashboard } />
           <Route exact path="/review" component={ Review } />
           <Route exact path="/terms" component={ Terms } />
-          <Route exact path="/review-result" component={ ReviewResult } />
-
+          <Route exact path="/review-result/:id" component={ ReviewResult } />
           <Route exact path="/photographer-search" component={ PhotographerSearch } />
-          <Route exact path="/photographer" component={ Photographer} />
+          <Route exact path="/photographer/:id" component={ Photographer} />
 
 
 

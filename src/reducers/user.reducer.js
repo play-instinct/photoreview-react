@@ -5,7 +5,8 @@ const initialState = {
   id: null,
   username: null,
   email: null,
-  role: null
+  role: null,
+  users: [],
 
 };
 

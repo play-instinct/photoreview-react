@@ -1,8 +1,10 @@
 import * as actionTypes from '../actions/';
-
+import moment from 'moment';
 const initialState = {
     photographers: [],
-    currentPhotographer: null
+    names: [],
+    currentPhotographer: null,
+    reviews: []
 }
 
 
@@ -13,15 +15,26 @@ export default function photographer(state = initialState, action) {
       case actionTypes.FETCH_PHOTOGRAPHERS_REQUEST_SUCCESS : {
         return {
           ...state,
-          photographers: action.response.photographerss
+          photographers: action.response.photographers
+        };
+      }
+
+
+      case actionTypes.FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_SUCCESS : {
+        return {
+          ...state,
+          names: action.response
         };
       }
 
     case actionTypes.FETCH_PHOTOGRAPHER_REQUEST_SUCCESS: {
         return {
           ...state,
-          currentPhotographer: action.response
-
+          currentPhotographer: { 
+            ...action.response,
+            createdAt: moment(action.response.createdAt).format('MM.YY')
+          },
+          reviews: action.response.reviews
         };
       }
       default: {

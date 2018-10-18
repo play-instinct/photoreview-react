@@ -6,6 +6,7 @@ import { Button, Checkbox, Form, Segment, Icon, Modal } from 'semantic-ui-react'
 import { Container, Grid, Divider } from 'semantic-ui-react';
 import { Header } from 'semantic-ui-react';
 import { createUser } from '../../actions';
+import { Link } from 'react-router-dom';
 import './Signup.container.css';
 
 class Signup extends React.Component {
@@ -46,43 +47,37 @@ render () {
                     width={16}>
         </Field>
       <Form.Field>
-        <label>Connect your Social Media</label>
-        <Divider/>
-       
+        <label>Verify your Social Media</label>
+        {/* <Divider/> */}
+        
         <Grid columns={3}>
           <Grid.Row>
             <Grid.Column>
-            <Modal trigger={<Button color='instagram' compact>
-              <Icon name='instagram' /> Instagram
-            </Button>}>
-    
-    <Modal.Header>Connect Instagram</Modal.Header>
-    <Modal.Content image>
-      <Modal.Description>
-        <Header>Connect Instagram</Header>
-        <p>We've found the following gravatar image associated with your e-mail address.</p>
-        <p>Is it okay to use this photo?</p>
-      </Modal.Description>
-    </Modal.Content>
-  </Modal>
-            
+              <Button color='instagram'>
+                <Icon name='instagram' />  Instagram
+              </Button>
             </Grid.Column>
             <Grid.Column>
-            <Button color='facebook' compact>
-              <Icon name='facebook' /> Facebook
-            </Button>
+                <Button color='facebook'>
+                <Icon name='facebook' /> Facebook
+              </Button>
             </Grid.Column>
             <Grid.Column>
-            <Button color='twitter' compact>
+            <Button color='twitter' >
               <Icon name='twitter' /> Twitter
             </Button>
+    
+            
             </Grid.Column>
             </Grid.Row>
         </Grid>
       </Form.Field>
       <Divider/>
       <Form.Field>
-        <Checkbox label='I agree to the Terms and Conditions' />
+        <Checkbox label={<label>
+          
+            I agree to the <Link to="/terms-and-conditions">Terms and Conditions</Link>
+        </label>} />
       </Form.Field>
       <Button primary type='submit'>Sign Up</Button>
     </Form>
@@ -102,8 +97,10 @@ or otherwise false information.</p>
 
 
 <p>Your account will not be approved unless
-your official social media account is
+one of your official and/or personal social media accounts is
 connected.</p> 
+
+<p>We will never have access to your data and will never post on your behalf on any social media platform. </p> 
 
 
       </Container>
