@@ -5,6 +5,10 @@ export const FETCH_USER_BASIC_INFO_REQUEST_TRIGGERED = 'FETCH_USER_BASIC_INFO_RE
 export const FETCH_USER_BASIC_INFO_REQUEST_SUCCESS = 'FETCH_USER_BASIC_INFO_REQUEST_SUCCESS';
 export const FETCH_USER_BASIC_INFO_REQUEST_FAILURE = 'FETCH_USER_BASIC_INFO_REQUEST_FAILURE';
 
+export const FETCH_DASHBOARD_INFO_REQUEST_TRIGGERED = 'FETCH_DASHBOARD_INFO_REQUEST_TRIGGERED';
+export const FETCH_DASHBOARD_INFO_REQUEST_SUCCESS = 'FETCH_DASHBOARD_INFO_REQUEST_SUCCESS';
+export const FETCH_DASHBOARD_INFO_REQUEST_FAILURE = 'FETCH_DASHBOARD_INFO_REQUEST_FAILURE';
+
 export function fetchUserBasicInfo() {
     const promise = fetch(`${appConfig.USER_ENDPOINT}`, {
         headers: {
@@ -18,6 +22,22 @@ export function fetchUserBasicInfo() {
         onFailure: FETCH_USER_BASIC_INFO_REQUEST_FAILURE,
         promise,
     };
+}
+
+export function fetchDashboardInfo(){
+    const promise = fetch(`${appConfig.DASHBOARD_ENDPOINT}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: sessionStorage.getItem(appConfig.TOKEN_CONTENT_KEY)
+        }
+    });
+    return {
+        onRequest: FETCH_DASHBOARD_INFO_REQUEST_TRIGGERED,
+        onSuccess: FETCH_DASHBOARD_INFO_REQUEST_SUCCESS,
+        onFailure: FETCH_DASHBOARD_INFO_REQUEST_FAILURE,
+        promise,
+    };
+
 }
 
 export const FETCH_USER_LOGIN_REQUEST_TRIGGERED = 'FETCH_USER_LOGIN_REQUEST_TRIGGERED';

@@ -15,7 +15,7 @@ import PhotoSearch from '../PhotographerSearch/photosearch-autosuggest.container
 
 class PhotographerSearch extends React.Component {
     componentDidMount(){
-        this.props.fetchAllPhotographerNames();
+        // this.props.fetchAllPhotographerNames();
     }
     render() {
         return(

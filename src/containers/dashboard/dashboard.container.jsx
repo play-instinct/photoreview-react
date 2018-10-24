@@ -12,10 +12,13 @@ import AdminSearch from '../AdminSearch/AdminSearch.container';
 import DashboardHeader from '../dashboard-header/dashboard-header.container';
 import ReviewMenu from '../review-menu/review-menu.component';
 
+import {fetchDashboardInfo}  from '../../actions';
+
 
 
 class Dashboard extends React.Component {
   componentDidMount(){
+    this.props.fetchDashboardInfo();
   };
 
   render(){
@@ -23,7 +26,6 @@ class Dashboard extends React.Component {
     <Container> 
       <DashboardHeader/>
       <ReviewMenu/>
-      {/* <ReviewFeed /> */}
     </Container>
 
   )
@@ -31,9 +33,6 @@ class Dashboard extends React.Component {
   }
 }
     
-Dashboard.defaultProps = {
-    
-}
 
 const mapStatetoProps = state => ({
   role: state.user.role
@@ -42,4 +41,4 @@ const mapStatetoProps = state => ({
 
 export default reduxForm({
   form: 'search'
-})(connect(mapStatetoProps)(Dashboard))
+})(connect(mapStatetoProps, {fetchDashboardInfo})(Dashboard))

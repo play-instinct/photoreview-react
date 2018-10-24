@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/';
+import moment from 'moment';
 
 const initialState = {
     reviews: [],
@@ -19,10 +20,12 @@ export default function review(state = initialState, action) {
     case actionTypes.FETCH_REVIEW_REQUEST_SUCCESS: {
         return {
           ...state,
-          currentReview: action.response
-
-        };
-      }
+          currentReview: {
+            ...action.response,
+            encounterDate: moment(action.response.createdAt).format('MM.YY')
+        },
+      };
+    }
       default: {
         return state;
       }

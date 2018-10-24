@@ -23,7 +23,8 @@ export default function photographer(state = initialState, action) {
       case actionTypes.FETCH_PHOTOGRAPHERS_SUGGESTIONS_REQUEST_SUCCESS : {
         return {
           ...state,
-          names: action.response
+          photographers: action.response,
+          names: action.response.map(item => item.name)
         };
       }
 

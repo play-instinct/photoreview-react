@@ -59,11 +59,11 @@ export function fetchAllReviews() {
 
 
 // export function ApproveReview() {
-//     const promise = fetch(`${appConfig.REVIEW_ENDPOINT/approve-review}`);
+//     const promise = fetch(`${appConfig.REVIEW_ENDPOINT}/${id}/approve-review}`);
 //     return {
-//         onRequest: FETCH_REVIEWS_REQUEST_TRIGGERED,
-//         onSuccess: FETCH_REVIEWS_REQUEST_SUCCESS,
-//         onFailure: FETCH_REVIEWS_REQUEST_FAILURE,
+//         onRequest: UPDATE_REVIEW_REQUEST_TRIGGERED,
+//         onSuccess: FETCH_REVIEW_REQUEST_SUCCESS,
+//         onFailure: FETCH_REVIEW_REQUEST_FAILURE,
 //         promise,
 //     };
 // }

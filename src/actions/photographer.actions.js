@@ -78,6 +78,16 @@ export function fetchAllPhotographerNames() {
     };
 }
 
+
+export function matchPhotographer(state, value) {
+    console.log(state)
+    console.log(value)
+    return (console.log('this returned'))
+}
+
+
+
+
 export function fetchPhotographer(id){
     console.log(appConfig); 
     console.log('fetch photographer triggered');

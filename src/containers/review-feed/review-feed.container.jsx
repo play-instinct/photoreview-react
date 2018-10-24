@@ -19,7 +19,7 @@ class ReviewFeed extends React.Component {
             <Grid.Column width={12} textAlign='left'>
               <Item.Group divided link>
                 <Item>
-                  <Item.Content>
+                  {/* <Item.Content>
                     <Item.Header as='a'> Shoot Review - { this.props.photographer.reviews[0].encounterDate} </Item.Header>
                     <Item.Meta>
                     <Rating maxRating={5} defaultRating={ this.props.photographer.reviews[0].starRating} icon='star' size='large' disabled/>
@@ -30,7 +30,7 @@ class ReviewFeed extends React.Component {
                     <Item.Extra>
                       <p>reviewed by a model in { this.props.photographer.reviews[0].createdAt}</p>
                     </Item.Extra>
-                  </Item.Content>
+                  </Item.Content> */}
                 </Item>
               </Item.Group>
               </Grid.Column>
