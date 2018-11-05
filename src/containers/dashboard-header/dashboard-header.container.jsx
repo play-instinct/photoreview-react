@@ -25,30 +25,33 @@ class DashboardHeader extends React.Component {
           <Header as='h4' icon id="dashboard-header">
             <Icon name='dashboard'/>
               Admin Dashboard
+              <Header.Subheader>
+                Logged in as {this.props.user.email}
+               </Header.Subheader>
+
           </Header>
-          <Grid.Row>
+          {/* <Grid.Row>
             <AdminSearch/>
-          </Grid.Row>
-          <Grid.Row columns={3}>
+          </Grid.Row> */}
+          <Grid.Row columns={3} id="dashboard-menu">
             <Grid.Column textAlign='center'>
-              <Header sub  className='link-header'>New Users</Header>
-              <Link to="/total-reviews" className="dash-link">9</Link>
+              <Link to="/dashboard/users" className="dash-link">9</Link>
+              <Header sub  className='link-header'>Users</Header>
             </Grid.Column>
            
             <Grid.Column textAlign='center'>
-              <Header sub className='link-header'>New Reviews</Header>
-              <Link to="/approved-reviews" className="dash-link">11</Link>
+              <Link to="/dashboard/reviews" className="dash-link">11</Link>
+              <Header sub className='link-header'>Reviews</Header>
             </Grid.Column>
             <Grid.Column textAlign='center'>
+            <Link to="/dashboard/notes" className="dash-link">2</Link>
               <Header sub  className='link-header'>
-                New Responses
+                Notes
               </Header>
-              <Link to="/approved-reviews" className="dash-link">2</Link>
             </Grid.Column>
-        
           </Grid.Row>
-          <Divider/>
           </Grid>
+          
       )
     }
     else return (
@@ -56,13 +59,9 @@ class DashboardHeader extends React.Component {
       <Header as='h4'  icon id="dashboard-header">
       <Icon name='dashboard'/>
         Dashboard
-      <Header.Subheader>Welcome, User!</Header.Subheader>
+      <Header.Subheader>Welcome, {this.props.user.email}!</Header.Subheader>
     </Header>
     <Grid.Row columns={3}>
-      {/* <Grid.Column textAlign='center'>
-        <Header sub className='link-header'>Last Login</Header>
-        <Link to="/last-login" className="dash-link" id="last-login-link">Sept. 21 2018 3.34 PM</Link>
-      </Grid.Column> */}
       <Grid.Column textAlign='center'>
         <Header sub className='link-header'>Total APPROVED Reviews</Header>
         <Link to="/approved-reviews" className="dash-link">3</Link>
@@ -72,7 +71,6 @@ class DashboardHeader extends React.Component {
         <Link to="/total-reviews" className="dash-link">4</Link>
       </Grid.Column>
     </Grid.Row>
-    <Divider/>
 </Grid>)
     
   }

@@ -4,8 +4,10 @@ const initialState = {
   isLoggedIn: false,
   id: null,
   username: null,
+  unapprovedUser: null,
   email: null,
   role: null,
+  currentUser: null,
   users: [],
 
 };
@@ -22,6 +24,18 @@ export default function user(state = initialState, action) {
         email: action.response.email,
         isLoggedIn: true,
         role: action.response.role
+      };
+    }
+    case actionTypes.FETCH_USERS_REQUEST_SUCCESS : {
+      return {
+        ...state,
+        users: action.response,
+      };
+    }
+    case actionTypes.CREATE_USER_REQUEST_SUCCESS: {
+      return {
+        ...state,
+        unapprovedUser: action.response._id,
       };
     }
     default: {

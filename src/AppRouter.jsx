@@ -4,6 +4,7 @@ import Main from './layouts/main/Main.layout';
 import GlobalLoader from './containers/global-loader/GlobalLoader.container';
 import Login from './containers/login/Login.container';
 import SignUp from './containers/signup/Signup.container';
+import SignUpSocial from './containers/signup/SignupSocial.container';
 import Dashboard from './containers/dashboard/dashboard.container';
 import LandingPage from './containers/landing-page/LandingPage.container';
 import Status from './containers/status/Status.container';
@@ -25,17 +26,13 @@ const AppRouter = () => (
           <Route exact path="/status" component={ Status } />
           <Route exact path="/about" component={ About } />
           <Route exact path="/signup" component={ SignUp } />
-          <Route exact path="/dashboard" component={ Dashboard } />
+          <Route exact path="/signup/social" component={ SignUpSocial } />
+          <PrivateRoute path="/dashboard" component={ Dashboard } />
           <Route exact path="/review" component={ Review } />
           <Route exact path="/terms" component={ Terms } />
-          <Route exact path="/review-result/:id" component={ ReviewResult } />
-          <Route exact path="/photographer-search" component={ PhotographerSearch } />
-          <Route exact path="/photographer/:id" component={ Photographer} />
-
-
-
-
-
+          <PrivateRoute exact path="/review-result/:id" component={ ReviewResult } />
+          <PrivateRoute exact path="/photographer-search" component={ PhotographerSearch } />
+          <PrivateRoute exact path="/photographer/:id" component={ Photographer} />
           {/* <PrivateRoute exact path="/dashboard" component={ Dashboard } /> */}
         </Main>
       </GlobalLoader>

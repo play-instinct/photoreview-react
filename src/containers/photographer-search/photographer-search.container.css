@@ -26,6 +26,78 @@
 
 #photo-search-container   > input.react-autosuggest__input {
     width: 350px;
+    padding: 10px 20px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    border-bottom: 1px solid #aaa;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-radius: 0px;
+    width: 350px;
+}
+
+
+input#photographers-autocomplete {
+    width: 350px;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    width: 350px;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+#photo-search-container {
+    height: 900px;
+
+}
+
+input#photographers-autocomplete:focus {
+    width: 350px;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    width: 350px;
+    outline: none;
+    font-size: 20px;
+}
+
+
+
+#photo-search-container > div > div > .menu {
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    
+
+}
+
+
+#photo-search-container > div > div > .menu:before {
+    /* content:'';
+    width:100%;
+    height:100%;    
+    position:absolute;
+    left:0;
+    top:0;
+    background:linear-gradient(transparent 150px, white); */
+  }
+
+
+#photo-search-container > div > div > .menu >.item {
+    color: grey;
+    padding: 10px;
+
+}
+
+#photo-search-container > div > div > .menu >.item.item-highlighted {
+    color: #4fdcd0;
+    
+}
+
+#photographers-autocomplete > .menu:after {
+
 }
 
 #location a {

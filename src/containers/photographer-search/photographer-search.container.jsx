@@ -28,14 +28,14 @@ class PhotographerSearch extends React.Component {
                                 Start typing photographer's name, instagram handle, or twitter username. 
                             </Header.Subheader>
                             <Header.Subheader id="location">
-                            <Link to="/location-search" >Search by Location</Link>
+                            {/* <Link to="/location-search" >Search by Location</Link> */}
                             </Header.Subheader>
                         </Header>
                         </Grid.Column>
                         <Grid.Column  textAlign='center' className="less-margin" id="photo-search-container">
                             <PhotoSearch/>
                         </Grid.Column>
-                        <Grid.Column centered padded>
+                        <Grid.Column centered>
                             {/* <Header as='h4' dividing  textAlign='center'>
                             Search Results
                             </Header> */}

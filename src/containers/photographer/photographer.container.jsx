@@ -43,16 +43,43 @@ class Photographer extends React.Component {
                     <Header.Subheader>
                     <span className ="photo-header-label">Active in:</span> 
                     <Link to="/approved-reviews" className="photo-link">
-                        { this.props.photographer.currentPhotographer.encounterLocation }
-                      
-                       
+                        { this.props.photographer.currentPhotographer.encounterLocation }          
                     </Link>
                 </Header.Subheader>
             </Header>
                 <Grid columns={16} textAlign='center'>
                 <Divider/>
             </Grid>
-            <ReviewFeed/>
+            <Grid centered columns={1} id="review-feed-container">
+            <Grid.Row textAlign='left'>
+            <Grid.Column width={12} textAlign='left'>
+              <Item.Group divided link>
+             {this.props.photographer.reviews.map(d => 
+             <Item key={d.reviewText}>
+             <Link to={`/review-result/${d._id}`}>
+                <Item.Content>
+                        <Item.Header as='a'> Shoot Review - { d.encounterDate} </Item.Header>
+                        <Item.Meta>
+                        <Rating maxRating={5} defaultRating={ d.starRating} icon='star' size='large' disabled={true} />
+                        </Item.Meta>
+                        <Item.Description>
+                            <p> { d.reviewText}</p>   
+                        </Item.Description>
+                        <Item.Extra>
+                      <p>reviewed by a model in { }</p>
+                    </Item.Extra>
+                  </Item.Content>
+            </Link>
+             </Item>)}
+
+             </Item.Group>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+            {/* <ReviewFeed/> */}
+
+
+
             </Container>
            : 
             <div>couldn't find this photographer.</div> }  

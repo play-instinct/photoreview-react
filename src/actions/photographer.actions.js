@@ -54,9 +54,9 @@ export function fetchAllPhotographers() {
         },
     });
     return {
-        onRequest: FETCH_PHOTOGRAPHER_REQUEST_TRIGGERED,
-        onSuccess: FETCH_PHOTOGRAPHER_REQUEST_SUCCESS,
-        onFailure: FETCH_PHOTOGRAPHER_REQUEST_FAILURE,
+        onRequest: FETCH_PHOTOGRAPHERS_REQUEST_TRIGGERED,
+        onSuccess: FETCH_PHOTOGRAPHERS_REQUEST_SUCCESS,
+        onFailure: FETCH_PHOTOGRAPHERS_REQUEST_FAILURE,
         promise,
     };
 }

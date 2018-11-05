@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import hasToken from '../../helpers/token'
 import { fetchUserBasicInfo } from '../../actions/';
 
+import { Dimmer, Loader, Image, Segment, Container } from 'semantic-ui-react'
+
+
 class GlobalLoader extends React.Component {
   componentDidMount() {
     if (hasToken() && !this.props.user.isLoggedIn) {
@@ -15,9 +18,11 @@ class GlobalLoader extends React.Component {
     return (
       <React.Fragment>
         {this.props.appState.isFetchingUserBasicInfo ? 
-          <React.Fragment>
-            <h2>Loading</h2>
-          </React.Fragment>
+          <Container>
+            <Dimmer inverted active>
+              <Loader>Loading</Loader>
+            </Dimmer>
+          </Container>
         :
           <React.Fragment>
             {this.props.children}

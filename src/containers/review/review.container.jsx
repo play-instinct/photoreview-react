@@ -18,13 +18,13 @@ class Review extends React.Component {
       name : val.photographerName,
       photographerAlias : val.photographerAlias,
       instagram_url : val.instagram_url,
-      created_by : val.created_by,
+      created_by : this.props.user.id,
       status : val.status,
       encounterDate : val.EncounterDate,
       encounterLocation : val.activeLocation,
       starRating : val.starRating,
       reviewText : val.ExperienceSummary,
-      author : val.author,
+      author : this.props.user.id,
       
     }
     console.log(body);
@@ -73,7 +73,7 @@ render () {
                     label="Instagram URL"
                     type="text"
                     validate={fieldValidators.required}
-                    width={0}>
+                    width={16}>
         </Field>
         <Field  component={FormDatePicker}
                     name="EncounterDate" 
@@ -100,13 +100,42 @@ render () {
             component={FormTextArea}
             name="ExperienceSummary" 
             label="Experience Summary"
-            validate={fieldValidators.required} />
+            validate={fieldValidators.required}
+            width={16} 
+            
+            />
+          <Header as='h4' dividing>
+        Additional Details
+    </Header>
+    <p>A quick list of descriptives to describe your experience - check all that apply.  </p>
+
+  <Grid.Column>
+
+                        <Checkbox label='TFP' />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Checkbox label='Paid' />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Checkbox label='Retouched Results' />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Checkbox label='Quick' />
+                        </Grid.Column>
+                        <Grid.Column>
+                        <Checkbox label='Friendly'  />
+                        </Grid.Column>
+                        <Grid.Column>
+                        <Checkbox label='Helpful' />
+                        </Grid.Column>
         <Divider/>
+
         <Button primary type='submit' size='big'>Submit Review</Button>
       </Form>
   </Container>
   </Grid.Column>
   <Grid.Column width={5}>
+
     <Header as='h4' dividing>
         Review Writing Tips
     </Header>
@@ -143,6 +172,8 @@ when writing reviews. </p>
 const mapStateToProps = state => ({
   appState: state.appState,
   user: state.user,
+  email: state.email,
+  id: state.id
 });
 
 

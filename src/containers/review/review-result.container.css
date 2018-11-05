@@ -39,13 +39,17 @@ div.ui.sub.header.raw-data-header {
     color: grey;
 }
 
+.revtext {
+    font-size: 16px;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
 
 #review-result-left{
     margin-top: 15px;
     border: 2px solid #8080800d;
     background-color: white;
 
-    /* background-color: #8080800d; */
 }
 
 .raw-data-container  > div.row {

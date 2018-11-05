@@ -9,17 +9,16 @@ import { createUser } from '../../actions';
 import { Link } from 'react-router-dom';
 import './Signup.container.css';
 
-class Signup extends React.Component {
+import appConfig from '../../config/appConfig';
+
+
+class SignupSocial extends React.Component {
   submitHandler(val){
-    const body = {
-      email: val.email,
-      password: val.password,
-      isApproved: false,
-    }
-    console.log(val);
-    this.props.createUser(body);  
   }
 
+  fetchAuth0(){
+    console.log('fetch auth0')
+  }
 
 render () {
   return (
@@ -27,7 +26,7 @@ render () {
     <Grid.Column width={9}>
     <Container>   
     <Header as='h3' dividing>
-      Sign Up
+      Verify Your Identity
     </Header>
     <Segment attached id="signup-notice">
       All new accounts are subject to a verification process by the website administrator.
@@ -35,27 +34,22 @@ render () {
     </Segment>
     <Divider/>
     <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="post">
-    <Field  component={FormInput}
-                    name="email" 
-                    label="Email"
-                    placeholder="Olivia.B@gmail.com"
-                    width={16}>
-        </Field>
-        <Field  component={FormInput}
-                    name="password" 
-                    label="Password"
-                    type="password"
-                    
-                    width={16}>
-        </Field>
-      <Divider/>
       <Form.Field>
-        <Checkbox label={<label>
-          
-            I agree to the <Link to="/terms" target="_blank" >Terms and Conditions</Link>
-        </label>} />
+        <label>Verify your Social Media</label>
+        <Divider/>
+
+        <Grid columns={1}>
+          <Grid.Row>
+            <Grid.Column>
+                <Button size="huge" fluid id="sm-verify-button">
+                <Icon name="check square"/>
+                 <a href={`${appConfig.LOGIN_ENDPOINT}/`}>Verify Social Media</a>
+              </Button>
+            </Grid.Column>
+            </Grid.Row>
+        </Grid>
       </Form.Field>
-      <Button primary type='submit'  size='big'>Sign Up</Button>
+      <Divider/>
     </Form>
   </Container>
     </Grid.Column>
@@ -63,25 +57,34 @@ render () {
       <Container>
       <Header as='h4'>Why do I have to connect a social media account?</Header>
       <p>Your connected official social media account is used for verification of your identity as the model and person you claim to be.</p> 
-      <p>It allows us to confirm that the reviews
-      posted on this website are by real models voicing their experiences, and not anyone
-      attempting to spread deflammatory 
-      or otherwise false information.</p>
-      <p>Your account will not be approved unless
-      one of your official and/or personal social media accounts is
-      connected.</p> 
-      <p>We will never have access to your data and will never post on your behalf on any social media platform. </p> 
+
+
+<p>It allows us to confirm that the reviews
+posted on this website are by real models voicing their experiences, and not anyone
+attempting to spread deflammatory 
+or otherwise false information.</p>
+
+
+
+<p>Your account will not be approved unless
+one of your official and/or personal social media accounts is
+connected.</p> 
+
+<p>We will never have access to your data and will never post on your behalf on any social media platform. </p> 
+
+
       </Container>
     </Grid.Column>
+
   </Grid>
   ) 
 }
 }
 
 const mapStateToProps = state => ({
-
+  user: state.user,
 });
 
 export default reduxForm({
   form: 'signup'
-})(connect(mapStateToProps, {createUser})(Signup))
+})(connect(mapStateToProps)(SignupSocial))

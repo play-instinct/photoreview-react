@@ -39,6 +39,24 @@
 }
 
 
+.ui.items a.item:hover, .ui.link.items>.item:hover {
+    border-bottom: 1px  solid rgba(34,36,38,.15);
+}
+
+.ui.items a.item:hover, .ui.link.items>.item {
+    padding-bottom: 10px !important;
+    border-bottom: 1px solid white;
+}
+
+.ui.link.items>.item:hover .content .header {
+    color: #46ddd0 !important;
+}
+
+
+#review-feed-container > div > div > div > div > div > div.extra {
+    padding-bottom: 10px;
+}
+
 .photo-header-label{
     font-weight: bold;
 }

@@ -19,5 +19,36 @@
 .link-header{
     margin-bottom: 10px !important;
     color: #46ddd0 !important;
+    margin-top: 5px !important;
 
+}
+
+
+#review-sub-menu-container  > Table {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.dash-link::before { 
+    content: "+";
+    font-size: 16px;
+}
+
+.dash-link:hover {
+    color: #46ddd0 !important;
+}
+
+.react-autosuggest__input{
+    text-align: center;
+}
+#review-sub-menu-container > table > thead > tr > th {
+    background-color: white;
+}
+
+#review-sub-menu-container > table > thead > tr > th > div {
+    background-color: #d6f1ed;
+}
+
+.ui.selectable.table tbody tr:hover, .ui.table tbody tr td.selectable:hover{
+    background-color: #d6f1ed !important;
 }

@@ -1,3 +1,9 @@
 .faq-question{
     font-weight: bold;
 }
+
+
+
+#root > div > div > div.ui.container.App-Content > div > div.eleven.wide.column > div > form > div:nth-child(9) > textarea {
+    height: 350px;
+}

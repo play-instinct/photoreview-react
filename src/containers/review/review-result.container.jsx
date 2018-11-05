@@ -5,11 +5,11 @@ import { FormInput, fieldValidators, FormDatePicker, FormTextArea } from 'semant
 import { Button, Checkbox, Form, Segment, Icon, Modal, Header, Message, Rating } from 'semantic-ui-react';
 import { Container, Grid, Divider } from 'semantic-ui-react';
 import { fetchUserLogin } from '../../actions';
+import { Link } from 'react-router-dom';
 import './review.container.css';
 import './review-result.container.css';
-
-//fetch review, but also need to have ability to update review
 import { fetchReview } from '../../actions';
+import { rateReview } from '../../actions';
 
 
 class ReviewResult extends React.Component {
@@ -18,7 +18,28 @@ class ReviewResult extends React.Component {
         this.props.fetchReview(this.props.match.params.id);
     }
   submitHandler(val) {
+      const body = {
+          noteBody: val.note,
+          action: this.state.visibileModal,
+          id: this.props.review.currentReview._id
+      }
+      console.log(body)
+      this.props.rateReview(body.id, body)  
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+        visibileModal: null,
+
+    };
+  }
+
+  changeVisibleModal(name){
+    this.setState({
+        visibileModal : name
+    })
+  }
 
 
 render () {
@@ -30,17 +51,18 @@ render () {
                     <Grid container id="admin-container" columns={3} textAlign="center">
                             <Grid.Row>
                                 <Grid.Column>
-                                <Modal trigger={<Button secondary type='submit'>Approve Review</Button>}>
+                                <Modal trigger={<Button secondary type='submit' onClick={ e => {this.changeVisibleModal('approved')}}>Approve Review</Button>}>
                                 <Modal.Header>Approve Review</Modal.Header>
                                     <Modal.Content image>
                                     <Modal.Description>
                                         <Header>Approve this Review</Header>
-                                        <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="post">
+                                        <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="put">
                                             <Field
                                                     component={FormTextArea}
                                                     name="note" 
                                                     label="Add Note:"
-                                                    />    
+                                                    /> 
+
                                             <Button secondary type='submit'>Approve Review</Button>                           
                                         </Form>
                                     </Modal.Description>
@@ -48,12 +70,12 @@ render () {
                                 </Modal>
                                 </Grid.Column>
                                 <Grid.Column>
-                                    <Modal trigger={<Button secondary type='submit'>Postpone Review</Button>}>
+                                    <Modal trigger={<Button secondary type='submit' onClick={ e => {this.changeVisibleModal('postponed')}}>Postpone Review</Button>}>
                                         <Modal.Header>Postpone Review</Modal.Header>
                                         <Modal.Content image>
                                         <Modal.Description>
                                             <Header>Postpone this Review</Header>
-                                            <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="post">
+                                            <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="put">
                                             <Field
                                                 component={FormTextArea}
                                                 name="note" 
@@ -66,12 +88,12 @@ render () {
                                     </Modal>
                                 </Grid.Column>
                                 <Grid.Column>
-                                <Modal trigger={<Button secondary type='submit'>Reject Review</Button>}>
+                                <Modal trigger={<Button secondary type='submit' onClick={ e => {this.changeVisibleModal('rejected')}}>Reject Review</Button>}>
                                         <Modal.Header>Reject Review</Modal.Header>
                                         <Modal.Content image>
                                         <Modal.Description>
                                             <Header>Reject this Review</Header>
-                                            <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="post">
+                                            <Form onSubmit={this.props.handleSubmit(this.submitHandler.bind(this))} method="put">
                                             <Field
                                                 component={FormTextArea}
                                                 name="note" 
@@ -189,16 +211,19 @@ render () {
         ) 
     }
     else return (
+        <div>
+            {this.props.review.currentReview ? <div>
         <Grid container stackable columns={2} id="overall-container-review-result" padded>
                 <Grid.Column width={11}>
                     <Grid container columns={2} id="review-result-container" padded>
                         <Grid.Column textAlign="left" width={6}>
                             <Header>
-                            {this.props.review.currentReview.photographer.name}
+                            Photographer's Name:
+
                             </Header>
                         </Grid.Column>
                         <Grid.Column width={10}>
-                           
+                        <Link to="/photographer/" >{this.props.review.currentReview.photographer.name}</Link>
                         </Grid.Column>
                         <Grid.Column textAlign="left" width={6}>
                             <Header>
@@ -208,14 +233,7 @@ render () {
                         <Grid.Column width={10}>
                         { this.props.review.currentReview.photographer.photographerAlias }
                         </Grid.Column>
-                        <Grid.Column textAlign="left" width={6}>
-                            <Header>
-                            Location & Year:
-                            </Header>
-                        </Grid.Column>
-                        <Grid.Column width={10}>
-                        
-                        </Grid.Column>
+                       
                         <Grid.Column textAlign="left" width={6}>
                             <Header>
                             Star Rating:
@@ -230,8 +248,16 @@ render () {
                             </Header>
                         </Grid.Column>
                         <Grid.Column width={13}>
-                            <p>{this.props.review.currentReview.reviewText}
+                            <p className="revtext">{this.props.review.currentReview.reviewText}
                             </p>
+                        </Grid.Column>
+                        <Grid.Column textAlign="left" width={6}>
+                            <Header>
+                            Location | Year:
+                            </Header>
+                        </Grid.Column>
+                        <Grid.Column width={10}>
+                        {this.props.review.currentReview.encounterLocation } |   {this.props.review.currentReview.encounterDate}
                         </Grid.Column>
                     </Grid>
                 </Grid.Column>
@@ -259,6 +285,8 @@ render () {
                      </Grid.Column>                    
                 </Grid.Column>
             </Grid>
+            </div> 
+           : <div>loading</div> }  </div>
     )
 
   }
@@ -268,10 +296,13 @@ const mapStateToProps = state => ({
   appState: state.appState,
   user: state.user,
   review: state.review,
+  photographer: state.photographer,
+  role: state.role,
+
 });
 
 
-const connectedReviewResult = connect(mapStateToProps, {fetchReview})(ReviewResult)
+const connectedReviewResult = connect(mapStateToProps, {rateReview, fetchReview} )(ReviewResult)
 
 export default reduxForm({
   form: 'review',

@@ -10,8 +10,10 @@ export default {
    */
   LOGIN_ENDPOINT: `${MAIN_APP_AUTHORITY}/login`,
   USER_ENDPOINT: `${MAIN_APP_AUTHORITY}/users`,
-  DASHBOARD_ENDPOINT: `${MAIN_APP_AUTHORITY}/users/dashboard`,
+  DASHBOARD_ENDPOINT: `${MAIN_APP_AUTHORITY}/dashboard`,
   STATUS_ENDPOINT: `${MAIN_APP_AUTHORITY}/status`,
+  BASIC_INFO_ENDPOINT: `${MAIN_APP_AUTHORITY}/basic-info`,
+ 
   /**
    * Path used to fetch photographers
    */
